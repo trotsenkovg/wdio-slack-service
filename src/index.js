@@ -67,6 +67,7 @@ class SlackService {
         if (retries.attempts >= 0 && !passed) {
             --this.steps;
             if(retries.attempts === retries.limit || retries.limit === 0) {
+                //fix error message
                 let testError = error.toString().replace(/[\u001b\u009b][-[+()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g, "");
                 ++this.failedSteps;
                 ++this.steps;
