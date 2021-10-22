@@ -69,7 +69,7 @@ class SlackService {
             if(retries.attempts === retries.limit || retries.limit === 0) {
                 let errorMessage;
                 if(error.matcherResult) {
-                    errorMessage = error.matcherResult.message();
+                    errorMessage = error.matcherResult.message;
                 } else {
                     errorMessage = error.toString();
                 }
