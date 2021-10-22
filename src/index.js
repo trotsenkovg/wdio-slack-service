@@ -67,13 +67,7 @@ class SlackService {
         if (retries.attempts >= 0 && !passed) {
             --this.steps;
             if(retries.attempts === retries.limit || retries.limit === 0) {
-                let errorMessage;
-                if(error.matcherResult) {
-                    errorMessage = error.matcherResult.message;
-                } else {
-                    errorMessage = error.toString();
-                }
-                let testError = errorMessage.replace(/[\u001b\u009b][-[+()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g, "");
+                let testError = error.toString().replace(/[\u001b\u009b][-[+()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g, "");
                 ++this.failedSteps;
                 ++this.steps;
                 const attach = failedAttachment({ title: this.testTitle, _currentRetry: retries.attempts }, testError, { duration });
